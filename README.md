@@ -27,14 +27,29 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -e .
 ```
 
-3. Set up Google Drive authentication:
+3. Set up Google Drive API credentials:
+   - Go to the [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select an existing one
+   - Enable the Google Drive API for your project
+   - Go to "Credentials" in the left sidebar
+   - Click "Create Credentials" and select "OAuth client ID"
+   - Choose "Desktop app" as the application type
+   - Download the credentials file and save it as `credentials.json`
+
+4. Set up Google Drive authentication:
 ```bash
 python -m gdrive_mcp_server.auth_setup --credentials /path/to/your/credentials.json --token /path/to/your/tokens.json
 ```
 
 ## Usage
 
+Run the server:
+```bash
+# Standard mode
+gdrive-mcp
 
+# HTTP mode
+gdrive-mcp --http
 ```
 
 ## Claude Desktop Integration
