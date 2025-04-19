@@ -1,0 +1,63 @@
+[project]
+name = "gdrive-mcp-server"
+version = "0.1.0"
+description = "MCP server for Google Drive integration"
+readme = "README.md"
+authors = [
+    { name = "Huagang Xie", email = "hxie@pallassecurity.com" }
+]
+
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.24.0",
+    "python-dotenv>=1.0.0",
+    "google-api-python-client>=2.0.0",
+    "google-auth-oauthlib>=1.0.0",
+    "google-auth-httplib2>=0.1.0",
+    "mcp>=1.3.0",
+    "fastmcp>=0.4.1",
+    "rich>=13.0.0"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+gdrive-mcp = "gdrive_mcp_server.server:main"
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+    "mypy>=1.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pallas/gdrive-mcp-server"
+"Bug Tracker" = "https://github.com/pallas/gdrive-mcp-server/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gdrive_mcp_server"]
+
+[tool.hatch.build]
+only-packages = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = ["E", "F", "I", "B", "W"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true 
